@@ -4,24 +4,53 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
+    border: 2px solid white;
 }
 
 .headerBar {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 2px;
+    padding: 2px;
+    border: 2px solid red;
 }
+
 
 .statsContainer {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    justify-content: space-between;
+    padding: 2px;
+    margin: 2px;
+    border: 2px solid blue;
+}
+
+.leftStats {
+    width: 50%;
+    margin: 2px;
+}
+
+.rightStats {
+    width: 50%;
+    justify-content: center;
+    margin: 2px;
 }
 
 #type {
-    border-radius: 4px;
-    height: 55px;
+    border-radius: 6px;
+    height: 50px;
     text-align: center;
-    width: 120px;
-    margin: 5px;
+    justify-content: center;
+    width: 110px;
+    margin: 16px;
+    border: 2px solid #242424;
+}
+
+img {
+    display: flex;
+    justify-content: center;
+    border: 2px solid purple;
 }

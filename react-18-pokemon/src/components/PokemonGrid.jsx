@@ -23,7 +23,7 @@ export default function PokemonGrid(props) {
 
     return (
         <div className={styles.pokemonGrid}>
-            <h1 className={styles.header}>MY POKEMON</h1>
+            <h1 className={styles.header}>POKEMON</h1>
             <div className={styles.listContainer}>
                 <input placeholder='Search Pokemon' autoFocus value={search} onChange={(e) => setSearch(e.target.value)} />
                 {data.results.filter(val => {
