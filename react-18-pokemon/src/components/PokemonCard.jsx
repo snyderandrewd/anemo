@@ -43,9 +43,9 @@ export default function PokemonCard(props) {
                 )
             })}
             <h3>Height</h3>
-                <p>{data.height} dm</p>
+                <p>{data.height * 10} cm</p>
             <h3>Weight</h3>
-                <p>{data.weight} hg</p>
+                <p>{data.weight / 10} kg</p>
             <h3>Location Areas</h3>
                 
             </div>
