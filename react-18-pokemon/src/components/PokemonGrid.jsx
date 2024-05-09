@@ -28,7 +28,7 @@ export default function PokemonGrid(props) {
                 <input placeholder='Search Pokemon' autoFocus value={search} onChange={(e) => setSearch(e.target.value)} />
                 {data.results.filter(val => {
                         return val.name.includes(search)
-                }).map((pokemon, pokemonIndex) => {
+                }).slice(0, 20).map((pokemon, pokemonIndex) => {
                     return (
                         <div onClick={handleSelectPokemon(pokemon.name)} key={pokemonIndex} className={styles.pokemon}>
                             {pokemon.name}
