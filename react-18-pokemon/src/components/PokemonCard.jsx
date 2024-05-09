@@ -20,7 +20,12 @@ export default function PokemonCard(props) {
                 </h4>
                 <div onClick={clearHandler}>X</div>
             </div>
+
+            
             <img src={data.sprites.front_default} alt={selectedPokemon} />
+            
+
+            <div className={styles.statsContainer}>
             <h3>Stats</h3>
             {data.stats.map((stat, statIndex) => {
                 return (
@@ -32,11 +37,19 @@ export default function PokemonCard(props) {
             <h3>Types</h3>
             {data.types.map((type, typeIndex) => {
                 return (
-                    <div key={typeIndex}>
+                    <div key={typeIndex} className={type.type.name} id={styles.type}>
                         <p><b>{type.type.name}</b></p>
                     </div>
                 )
             })}
+            <h3>Height</h3>
+                <p>{data.height} dm</p>
+            <h3>Weight</h3>
+                <p>{data.weight} hg</p>
+            <h3>Location Areas</h3>
+                
+            </div>
+            
         </div>
     )
 }
