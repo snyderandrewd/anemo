@@ -5,7 +5,7 @@ import PokemonGrid from './components/PokemonGrid'
 
 function App() {
   const [selectedPokemon, setSelectedPokemon] = useState(null)
-  const url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151'
+  const url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=2000'
   const parentUrl = 'https://pokeapi.co/api/v2/pokemon/'
 
   function handleSelectPokemon(pokemon) {

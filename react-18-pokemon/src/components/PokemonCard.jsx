@@ -112,7 +112,7 @@ export default function PokemonCard(props) {
                 <h1>
                     {selectedPokemon}
                 </h1>
-                <div onClick={clearHandler}><b>Clear</b></div>
+                <div onClick={clearHandler}><b>back</b></div>
             </div>
 
             <img src={data.sprites.front_default} alt={selectedPokemon} />
