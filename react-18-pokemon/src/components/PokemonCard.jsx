@@ -112,12 +112,12 @@ export default function PokemonCard(props) {
                 <h4>
                     {selectedPokemon}
                 </h4>
-                <div onClick={clearHandler}>clear</div>
+                <div onClick={clearHandler}>Clear</div>
             </div>
 
             <img src={data.sprites.front_default} alt={selectedPokemon} />
 
-            <div className={styles.statsContainer}>
+            <div className={styles.infoContainer}>
                 <div className={styles.baseStats}>
                 <h3>base stats: </h3>
                 {data.stats.map((stat, statIndex) => {
@@ -131,11 +131,11 @@ export default function PokemonCard(props) {
                 <p><b>weight:</b> {data.weight / 10} kg</p>
                 </div>
 
-                <div className={styles.typeGrid}>
+                <div className={styles.types}>
                 <h3>types: </h3>
                 {pokeTypes.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={type} id={styles.type}>
+                        <div key={typeIndex} className="typeBox" id={styles.type}>
                             <p><b>{type}</b></p>
                         </div>
                     )
