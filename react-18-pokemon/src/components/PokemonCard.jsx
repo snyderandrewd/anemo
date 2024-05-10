@@ -135,7 +135,7 @@ export default function PokemonCard(props) {
                 <h3>types: </h3>
                 {pokeTypes.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className="typeBox" id={styles.type}>
+                        <div key={typeIndex} className={type} id={styles.type}>
                             <p><b>{type}</b></p>
                         </div>
                     )
