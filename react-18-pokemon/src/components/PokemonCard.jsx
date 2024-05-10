@@ -109,10 +109,10 @@ export default function PokemonCard(props) {
     return (
         <div className={styles.card}>
             <div className={styles.headerBar}>
-                <h4>
+                <h1>
                     {selectedPokemon}
-                </h4>
-                <div onClick={clearHandler}>Clear</div>
+                </h1>
+                <div onClick={clearHandler}><b>Clear</b></div>
             </div>
 
             <img src={data.sprites.front_default} alt={selectedPokemon} />
@@ -135,7 +135,7 @@ export default function PokemonCard(props) {
                 <h3>types: </h3>
                 {pokeTypes.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={type} id={styles.type}>
+                        <div key={typeIndex} className={styles.typeBox} id={type}>
                             <p><b>{type}</b></p>
                         </div>
                     )
@@ -144,7 +144,7 @@ export default function PokemonCard(props) {
                 {doubleWeaknesses.length > 0 && <h3>double weaknesses:</h3>}
                 {doubleWeaknesses.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={type} id={styles.type}>
+                        <div key={typeIndex} className={styles.typeBox} id={type}>
                             <p><b>{type}</b></p>
                         </div>
                     )
@@ -153,7 +153,7 @@ export default function PokemonCard(props) {
                 {weaknesses.length > 0 && <h3>weaknesses:</h3>}
                 {weaknesses.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={type} id={styles.type}>
+                        <div key={typeIndex} className={styles.typeBox} id={type}>
                             <p><b>{type}</b></p>
                         </div>
                     )
@@ -162,7 +162,7 @@ export default function PokemonCard(props) {
                 {resistances.length > 0 && <h3>resistances:</h3>}
                 {resistances.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={type} id={styles.type}>
+                        <div key={typeIndex} className={styles.typeBox} id={type}>
                             <p><b>{type}</b></p>
                         </div>
                     )
@@ -171,7 +171,7 @@ export default function PokemonCard(props) {
                 {doubleResistances.length > 0 && <h3>double resistances:</h3>}
                 {doubleResistances.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={type} id={styles.type}>
+                        <div key={typeIndex} className={styles.typeBox} id={type}>
                             <p><b>{type}</b></p>
                         </div>
                     )
@@ -180,7 +180,7 @@ export default function PokemonCard(props) {
                 {immunities.length > 0 && <h3>immunities:</h3>}
                 {immunities.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={type} id={styles.type}>
+                        <div key={typeIndex} className={styles.typeBox} id={type}>
                             <p><b>{type}</b></p>
                         </div>
                     )
