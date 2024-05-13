@@ -15,7 +15,7 @@ function App() {
   }
 
   return (
-    <ErrorBoundary fallback={<div>Error...</div>}>
+    <ErrorBoundary fallback={<div><h1 className='display-1'>Error...</h1><img src="https://i.pinimg.com/originals/8c/ef/c2/8cefc23a961736ece0904a4fd0d2a89c.png" className='d-block mx-auto'/></div>}>
       <Suspense fallback={<div>Loading...</div>}>
         <div className="App">
           {selectedPokemon ? (

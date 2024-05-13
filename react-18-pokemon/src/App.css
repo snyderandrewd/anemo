@@ -1,0 +1,13 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    min-height: 100vh;
+    overflow: auto;
+}
+
+.input-centered::placeholder {
+    text-align: center;
+  }

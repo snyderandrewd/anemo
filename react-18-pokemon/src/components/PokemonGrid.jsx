@@ -1,5 +1,4 @@
 import React, { use, useState } from 'react'
-import styles from './pokemongrid.module.css'
 
 async function fetchData(url) {
     const res = await fetch(url)
@@ -12,9 +11,7 @@ export default function PokemonGrid(props) {
     let data
     if (localStorage.getItem('pokemon-cards')) {
         data = JSON.parse(localStorage.getItem('pokemon-cards'))
-        console.log('FETCHED FROM CACHE', console.log(data))
     } else {
-        console.log('FETCHED FROM API')
         const data = use(fetchData(url))
         localStorage.setItem('pokemon-cards', JSON.stringify(data))
     }
@@ -22,19 +19,23 @@ export default function PokemonGrid(props) {
     
 
     return (
-        <div className={styles.pokemonGrid}>
-            <h1 className={styles.header}>POKEMON</h1>
-            <div className={styles.listContainer}>
-                <input placeholder='Search Pokemon' value={search} onChange={(e) => setSearch(e.target.value)} />
-                {data.results.filter(val => {
-                        return val.name.includes(search.toLowerCase())
-                }).slice(0, 20).map((pokemon, pokemonIndex) => {
-                    return (
-                        <div onClick={handleSelectPokemon(pokemon.name)} key={pokemonIndex} className={styles.pokemon}>
-                            {pokemon.name}
-                        </div>
-                    )
-                })}
+        <div className='container-fluid flex-grow-1 bg-bdark'>
+            <div>
+                <h1 className='display-1 text-center text-light'>pokemon</h1>
+                <div className='row justify-content-center my-5'>
+                    <div className='col-lg-3 text-center'>
+                        <input placeholder='search pokemon' value={search} onChange={(e) => setSearch(e.target.value)} className='form-control bg-light input-centered'/>
+                        {data.results.filter(val => {
+                                return val.name.includes(search.toLowerCase())
+                        }).slice(0, 10).map((pokemon, pokemonIndex) => {
+                            return (
+                                <div onClick={handleSelectPokemon(pokemon.name)} key={pokemonIndex}>
+                                    <h6 className='display-6 mt-4 text-light'>{pokemon.name}</h6>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
             </div>
         </div>
     )

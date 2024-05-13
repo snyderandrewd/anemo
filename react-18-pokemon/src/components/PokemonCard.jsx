@@ -1,5 +1,4 @@
 import React, { use } from 'react'
-import styles from './pokemoncard.module.css'
 
 async function fetchData(url) {
     const res = await fetch(url)
@@ -107,18 +106,20 @@ export default function PokemonCard(props) {
     categorizeTypes(pokeTypes);
 
     return (
-        <div className={styles.card}>
-            <div className={styles.headerBar}>
-                <h1>
+        <div className='container-fluid border'>
+            <div className='row'>
+                <h1 className='display-1'>
                     {selectedPokemon}
                 </h1>
-                <div onClick={clearHandler}><b>back</b></div>
+                <button onClick={clearHandler} type='button' className={`btn btn-${pokeTypes[0]}`}><b>back</b></button>
+            </div>
+            
+            <div class='container'>
+            <img src={data.sprites.front_default} alt={selectedPokemon} className='mx-auto d-block' />
             </div>
 
-            <img src={data.sprites.front_default} alt={selectedPokemon} />
-
-            <div className={styles.infoContainer}>
-                <div className={styles.baseStats}>
+            <div>
+                <div>
                 <h3>base stats: </h3>
                 {data.stats.map((stat, statIndex) => {
                     return (
@@ -131,11 +132,11 @@ export default function PokemonCard(props) {
                 <p><b>weight:</b> {data.weight / 10} kg</p>
                 </div>
 
-                <div className={styles.types}>
+                <div>
                 <h3>types: </h3>
                 {pokeTypes.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={styles.typeBox} id={type}>
+                        <div key={typeIndex}>
                             <p><b>{type}</b></p>
                         </div>
                     )
@@ -144,7 +145,7 @@ export default function PokemonCard(props) {
                 {doubleWeaknesses.length > 0 && <h3>double weaknesses:</h3>}
                 {doubleWeaknesses.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={styles.typeBox} id={type}>
+                        <div key={typeIndex}>
                             <p><b>{type}</b></p>
                         </div>
                     )
@@ -153,7 +154,7 @@ export default function PokemonCard(props) {
                 {weaknesses.length > 0 && <h3>weaknesses:</h3>}
                 {weaknesses.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={styles.typeBox} id={type}>
+                        <div key={typeIndex}>
                             <p><b>{type}</b></p>
                         </div>
                     )
@@ -162,7 +163,7 @@ export default function PokemonCard(props) {
                 {resistances.length > 0 && <h3>resistances:</h3>}
                 {resistances.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={styles.typeBox} id={type}>
+                        <div key={typeIndex}>
                             <p><b>{type}</b></p>
                         </div>
                     )
@@ -171,7 +172,7 @@ export default function PokemonCard(props) {
                 {doubleResistances.length > 0 && <h3>double resistances:</h3>}
                 {doubleResistances.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={styles.typeBox} id={type}>
+                        <div key={typeIndex}>
                             <p><b>{type}</b></p>
                         </div>
                     )
@@ -180,7 +181,7 @@ export default function PokemonCard(props) {
                 {immunities.length > 0 && <h3>immunities:</h3>}
                 {immunities.map((type, typeIndex) => {
                     return (
-                        <div key={typeIndex} className={styles.typeBox} id={type}>
+                        <div key={typeIndex}>
                             <p><b>{type}</b></p>
                         </div>
                     )
