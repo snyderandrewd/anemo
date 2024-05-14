@@ -107,25 +107,22 @@ export default function PokemonCard(props) {
     categorizeTypes(pokeTypes);
 
     return (
-        <div className='container-fluid border bg-bdark text-light'>
-            <div className='bg-bdark text-light py-4'>
-                <div className='container'>
-                    <div className='row align-items-center'>
-                        <div className='col-lg-9'>
-                            <h1 className='display-4 mb-0' style={{ textTransform: 'capitalize' }}>
-                                {selectedPokemon}
-                            </h1>
-                        </div>
-                        <div className='col-lg-3 text-right text-lg-center'>
-                            <button 
-                                onClick={clearHandler} 
-                                type='button' 
-                                className={`btn btn-bdark btn-lg`}
-                                style={{ minWidth: '100px' }} // Set minimum width for better mobile appearance
-                            >
-                                <i className="fas fa-arrow-left"></i> Back
-                            </button>
-                        </div>
+        <div className='container-fluid bg-bdark text-light'>
+            <div className='container bg-bdark text-light mt-2'>
+                <div className='row'>
+                    <div className='col-6'>
+                        <h1 className='display-1' style={{ textTransform: 'capitalize' }}>
+                            {selectedPokemon}
+                        </h1>
+                    </div>
+                    <div className='col-2 ms-auto align-self-center'>
+                        <button 
+                            onClick={clearHandler} 
+                            type='button' 
+                            className={`btn btn-bdark btn-lg`}
+                        >
+                            <i className="fas fa-arrow-left"></i> Back
+                        </button>
                     </div>
                 </div>
             </div>
@@ -133,12 +130,12 @@ export default function PokemonCard(props) {
                 <div className='container'>
                     <div>
                         {pokeTypes.map((type, typeIndex) => (
-                            <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} mr-2 mb-2 fs-2`}>{type}</span>
+                            <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} ms-2 mb-2 fs-2`}>{type}</span>
                         ))}
                     </div>
                 </div>
     
-            <div className='container bg-bdark py-1'>
+            <div className='container bg-bdark'>
                 <div className='row justify-content-center'>
                     <div className='col-md-6'>
                         <img 
@@ -152,115 +149,106 @@ export default function PokemonCard(props) {
             </div>
 
     
-            <div className="container-fluid">
-    <div className="row">
-    <div className="col-md-6">
-        <div className='container mb-4'>
-            <div className='container'>
-                <div className='bg-bdark text-light'>
-                    <h4>Base Stats:</h4>
-                    <div>
-                    {data.stats.map((stat, statIndex) => (
-                        <div key={statIndex} className='row mb-2 d-flex'>
-                            <div className='col-5'>
-                                <b>{stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}: </b>
+            <div className="container text-start">
+                <div className="row justify-content-around">
+                    <div className='col-md-6 bg-bdark text-light'>
+                        <div className='container mb-4'>
+                            <h4>Base Stats:</h4>
+                            <div>
+                                {data.stats.map((stat, statIndex) => (
+                                    <div key={statIndex} className='row mb-2'>
+                                        <div className='col-5'>
+                                            <b>{stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}: </b>
+                                        </div>
+                                        <div className='col-5'>
+                                            <b>{stat.base_stat}</b>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-                            <div className='col-5'>
-                                <b>{stat.base_stat}</b>
+                            <div className='row mb-4'></div>
+                            <div className='row mb-2'>
+                                <div className='col-5'>
+                                    <b>Height:</b>
+                                </div>
+                                <div className='col-5'>
+                                    <b>{data.height * 10} cm</b>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                    <div className='row mb-4'></div>
-                    <div className='row mb-2'>
-                        <div className='col-5'>
-                            <b>Height:</b>
-                        </div>
-                        <div className='col-5'>
-                            <b>{data.height * 10} cm</b>
+                            <div className='row'>
+                                <div className='col-5'>
+                                    <b>Weight:</b>
+                                </div>
+                                <div className='col-5'>
+                                    <b>{data.weight / 10} kg</b>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className='row'>
-                        <div className='col-5'>
-                            <b>Weight:</b>
-                        </div>
-                        <div className='col-5'>
-                            <b>{data.weight / 10} kg</b>
+
+                    <div className="col-md-6">
+                        <div className='row justify-content-around'>
+                                <div>
+                                    {doubleWeaknesses.length > 0 &&
+                                        <div>
+                                            <h4>Double Weaknesses:</h4>
+                                            <div className='d-flex flex-wrap'>
+                                                {doubleWeaknesses.map((type, typeIndex) => (
+                                                    <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} ms-1 mb-2 fs-5`}>{type}</span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    }
+
+                                    {weaknesses.length > 0 &&
+                                        <div>
+                                            <h4>Weaknesses:</h4>
+                                            <div className='d-flex flex-wrap'>
+                                                {weaknesses.map((type, typeIndex) => (
+                                                    <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} ms-1 mb-2 fs-5`}>{type}</span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    }
+
+                                    {resistances.length > 0 &&
+                                        <div>
+                                            <h4>Resistances:</h4>
+                                            <div className='d-flex flex-wrap'>
+                                                {resistances.map((type, typeIndex) => (
+                                                    <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} ms-1 mb-2 fs-5`}>{type}</span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    }
+
+                                    {doubleResistances.length > 0 &&
+                                        <div>
+                                            <h4>Double Resistances:</h4>
+                                            <div className='d-flex flex-wrap'>
+                                                {doubleResistances.map((type, typeIndex) => (
+                                                    <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} ms-1 mb-2 fs-5`}>{type}</span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    }
+
+                                    {immunities.length > 0 &&
+                                        <div>
+                                            <h4 display-4>Immunities:</h4>
+                                            <div className='d-flex flex-wrap'>
+                                                {immunities.map((type, typeIndex) => (
+                                                    <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} ms-1 mb-2 fs-5`}>{type}</span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-        <div className="col-md-6">
-            <div className='container'>
-                <div className='container'>
-                    <div className='bg-bdark text-light'>
-                        <div>
-
-                            {doubleWeaknesses.length > 0 &&
-                                <div>
-                                    <h4>Double Weaknesses:</h4>
-                                    <div className='d-flex flex-wrap'>
-                                        {doubleWeaknesses.map((type, typeIndex) => (
-                                            <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} mr-2 mb-2 fs-5`}>{type}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            }
-
-                            {weaknesses.length > 0 &&
-                                <div>
-                                    <h4>Weaknesses:</h4>
-                                    <div className='d-flex flex-wrap'>
-                                        {weaknesses.map((type, typeIndex) => (
-                                            <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} mr-2 mb-2 fs-5`}>{type}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            }
-
-                            {resistances.length > 0 &&
-                                <div>
-                                    <h4>Resistances:</h4>
-                                    <div className='d-flex flex-wrap'>
-                                        {resistances.map((type, typeIndex) => (
-                                            <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} mr-2 mb-2 fs-5`}>{type}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            }
-
-                            {doubleResistances.length > 0 &&
-                                <div>
-                                    <h4>Double Resistances:</h4>
-                                    <div className='d-flex flex-wrap'>
-                                        {doubleResistances.map((type, typeIndex) => (
-                                            <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} mr-2 mb-2 fs-5`}>{type}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            }
-
-                            {immunities.length > 0 &&
-                                <div>
-                                    <h4 display-4>Immunities:</h4>
-                                    <div className='d-flex flex-wrap'>
-                                        {immunities.map((type, typeIndex) => (
-                                            <span key={typeIndex} style={{ textTransform: 'capitalize'}} className={`badge text-bg-${type} mr-2 mb-2 fs-5`}>{type}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-            </div>
     )
 }
 
