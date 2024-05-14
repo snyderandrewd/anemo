@@ -1,0 +1,8 @@
+.pokemon {
+    transition-duration: 200ms;
+    cursor: pointer;
+}
+
+.pokemon:hover {
+    padding-left: 6px;
+}

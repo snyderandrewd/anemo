@@ -7,7 +7,3 @@ body, html {
     min-height: 100vh;
     overflow: auto;
 }
-
-.input-centered::placeholder {
-    text-align: center;
-  }

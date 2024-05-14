@@ -1,4 +1,5 @@
 import React, { use, useState } from 'react'
+import styles from './pokemongrid.module.css'
 
 async function fetchData(url) {
     const res = await fetch(url)
@@ -21,16 +22,18 @@ export default function PokemonGrid(props) {
     return (
         <div className='container-fluid flex-grow-1 bg-bdark'>
             <div>
-                <h1 className='display-1 text-center text-light'>pokemon</h1>
+                <h1 className='display-1 text-center text-light mt-5'>Pokemon</h1>
                 <div className='row justify-content-center my-5'>
-                    <div className='col-lg-3 text-center'>
-                        <input placeholder='search pokemon' value={search} onChange={(e) => setSearch(e.target.value)} className='form-control bg-light input-centered'/>
+                    <div className='col-lg-3 text-left'>
+                        <input placeholder='Search for a pokemon' value={search} onChange={(e) => setSearch(e.target.value)} className='form-control bg-light'/>
                         {data.results.filter(val => {
                                 return val.name.includes(search.toLowerCase())
                         }).slice(0, 10).map((pokemon, pokemonIndex) => {
                             return (
                                 <div onClick={handleSelectPokemon(pokemon.name)} key={pokemonIndex}>
-                                    <h6 className='display-6 mt-4 text-light'>{pokemon.name}</h6>
+                                    <h6 className={`display-6 mt-4 text-light pokemon-grid-list ${styles.pokemon}`}>
+                                        {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                                    </h6>
                                 </div>
                             )
                         })}
